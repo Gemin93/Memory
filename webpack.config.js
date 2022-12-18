@@ -23,7 +23,14 @@ module.exports = {
     },{
       test: /\.svg$/,
       type: "asset/resource"
-    }]
+    },{
+        test: /\.(ts|tsx)$/,
+        type: "ts-loader",
+        exclude: /node_modules/
+      }]
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'],
   },
   plugins: [new HtmlWebpackPlugin({
     template: "./src/index.html"
