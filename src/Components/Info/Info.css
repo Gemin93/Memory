@@ -1,0 +1,16 @@
+.info{
+    text-align: center;
+    width: 195px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+.info__text{
+    color: var(--color-blue);
+}
+.info__number{
+    color: var(--color-orange);
+}

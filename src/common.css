@@ -30,35 +30,3 @@ body{
 .wrapper{
     display: flex;
 }
-.info{
-    text-align: center;
-    width: 195px;
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-right: 80px;
-    margin-left: 80px;
-}
-.info__text{
-    color: var(--color-blue);
-}
-.info__number{
-    color: var(--color-orange);
-}
-
-.field__cards{
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 15px;
-    row-gap: 15px;
-}
-.card{
-    width: 115px;
-    height: 115px;
-    background-color: var(--color-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

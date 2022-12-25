@@ -1,0 +1,17 @@
+.card{
+    width: 115px;
+    height: 115px;
+    background-color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.done{
+    opacity: 0;
+    pointer-events: none;
+}
+.selected {
+    background-color: var(--color-bgcard);
+    pointer-events: none;
+}

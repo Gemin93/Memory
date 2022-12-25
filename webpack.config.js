@@ -22,10 +22,10 @@ module.exports = {
       use: ['style-loader','css-loader']
     },{
       test: /\.svg$/,
-      type: "asset/resource"
+      type: "asset/inline",
     },{
         test: /\.(ts|tsx)$/,
-        type: "ts-loader",
+        use: "ts-loader",
         exclude: /node_modules/
       }]
   },
