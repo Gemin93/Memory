@@ -14,6 +14,7 @@ export const Card: FC<Props> = ({id,pic, select,done,onClick}) =>{
     return(
         <li
             className={`card ${done ? 'done' : ''} ${select ? 'selected': ''}`}
+            data-id={id}
             onClick={onClick}
         >
             <img

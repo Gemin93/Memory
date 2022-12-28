@@ -1,5 +1,6 @@
 // интерйес для карты
 export type CardStatus = {
+    id:number;
     image: string;
     select: boolean;
     done: boolean;
