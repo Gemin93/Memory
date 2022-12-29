@@ -4,6 +4,7 @@ import {Field} from "../Field/Field";
 import {Info} from "../Info/Info";
 import { dblCardArray, shuffleCards } from "../../utils";
 import {FieldStatus} from "../../types";
+import {Modal} from "../Modal/Modal";
 
 
 //получение массива карточек
@@ -23,7 +24,7 @@ export const App = () =>{
     const [cardId, setCardId] = React.useState<number | null>(null);
     const [selectedCard, setSelectedCard] = React.useState<FieldStatus>([]);
     const [cards, setCards] = React.useState(generateCards());
-    const [removeCards, setRemoveCards] = React.useState<Array<number>>([])
+    const [foundPairs, setFoundPairs] = React.useState<number>(0);
     console.log(cards);
 
     const onCardClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -39,13 +40,14 @@ export const App = () =>{
         if (card && selectedCard.length < 2){
             card.select = true;
             setSelectedCard([...selectedCard, card]);
-            setRemoveCards([...removeCards, card.id]);
         }
 
     }
 
-    // console.log(selectedCard.length);
-    // console.log(removeCards[1]);
+    const newGame = () => {
+        setCards(generateCards());
+        setFoundPairs(0);
+    }
 
     React.useEffect(() => {
         if (selectedCard.length == 2){
@@ -55,17 +57,15 @@ export const App = () =>{
                 firstCard.done = true;
                 secondCard.done = true;
                 selectedCard.length = 0;
+                setFoundPairs(foundPairs + 1);
             } else {
                 firstCard.select = false;
                 secondCard.select = false;
                 selectedCard.length = 0;
             }
-            // console.log(firstCard);
             console.log(cards);
-            // console.log(secondCard);
         }}
     )
-
 
     return (
         <React.Fragment>
@@ -80,6 +80,8 @@ export const App = () =>{
                         infoType="ходов осталось"
                         className="moves__left" />
                 </div>
+                {foundPairs === 8 ? <Modal resultGame={true} countOfMoves={20} onClick={() => newGame()}/> : ''}
+
             </div>
         </React.Fragment>
     );
