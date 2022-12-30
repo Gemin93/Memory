@@ -39,7 +39,7 @@ export const App = () =>{
         const card = cards.find(card => card.id == idCard);
         if (card && selectedCard.length < 2){
             card.select = true;
-            setSelectedCard([...selectedCard, card]);
+            setSelectedCard([...selectedCard, card]); // добавляю выбранную карту в массив по щелку мыши
             setMoves(moves + 1);
         }
     }
@@ -54,11 +54,14 @@ export const App = () =>{
         if (selectedCard.length === 2){
             const firstCard = selectedCard[0];
             const secondCard = selectedCard[1];
-            if (firstCard.image !== secondCard.image){
+            if (firstCard.image !== secondCard.image){ // если image не совпадают - то класс select у карт удаляется
+                // но почему то он не удаляется сразу, а только по следующему щелчку мыши
+                // поэтому две карты открыты до тех пор, пока нет нажатия по третьей
+                // так и не смог разобраться почему так происходит
                 firstCard.select = false;
                 secondCard.select = false;
-                selectedCard.length = 0;
-            } else {
+                selectedCard.length = 0; // обнуляю массив выбранных кард, не уверен что это верный способ, но вроде обнуляется
+            } else { // если свойства image совпадаю - то у каждой карты появляется класс done и они скрываются с поля
                 firstCard.done = true;
                 secondCard.done = true;
                 selectedCard.length = 0;
