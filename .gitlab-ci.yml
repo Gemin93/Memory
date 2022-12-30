@@ -3,7 +3,7 @@ image: node:16.12.0
 pages:
   stage: deploy
   before_script:
-    -npm ci
+    -npm install
   script:
     - npm run build
     - cp -r dist/. public
